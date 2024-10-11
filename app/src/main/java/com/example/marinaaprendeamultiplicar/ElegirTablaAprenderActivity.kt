@@ -24,8 +24,7 @@ class ElegirTablaAprenderActivity : AppCompatActivity() {
             findViewById<Button>(R.id.button7),
             findViewById<Button>(R.id.button8),
             findViewById<Button>(R.id.button9),
-            findViewById<Button>(R.id.button10),
-            findViewById<Button>(R.id.button0) // Si también tienes el botón 0
+            findViewById<Button>(R.id.button10)
         )
 
         for (i in buttons.indices) {

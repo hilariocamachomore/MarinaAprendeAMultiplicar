@@ -87,17 +87,6 @@
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"/>
 
-
-    <Button
-        android:id="@+id/button0"
-        android:text="0"
-        android:textSize="24sp"
-        android:backgroundTint="@color/teal_200"
-        android:textColor="@color/white"
-        android:layout_columnWeight="1"
-        android:layout_rowWeight="1"
-        android:layout_columnSpan="2" />
-
     <Button
         android:id="@+id/button10"
         android:text="10"
@@ -105,6 +94,7 @@
         android:backgroundTint="@color/blue_10"
         android:textColor="@color/white"
         android:layout_columnWeight="1"
-        android:layout_rowWeight="1"/>
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="3" />
 
 </GridLayout>
