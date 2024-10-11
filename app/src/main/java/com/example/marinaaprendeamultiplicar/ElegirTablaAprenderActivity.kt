@@ -31,7 +31,7 @@ class ElegirTablaAprenderActivity : AppCompatActivity() {
             buttons[i].setOnClickListener {
                 val tablaSeleccionada = i + 1 // +1 porque los índices van de 0 a 9
                 val intent = Intent(this, AprenderTablaActivity::class.java)
-                intent.putExtra("tabla", tablaSeleccionada)
+                intent.putExtra("NUMERO_TABLA", tablaSeleccionada)
                 startActivity(intent)
             }
         }
