@@ -14,7 +14,7 @@ class AprenderTablaActivity : AppCompatActivity() {
 
     companion object {
         const val NUMERO_TABLA = "NUMERO_TABLA"
-    }
+     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
