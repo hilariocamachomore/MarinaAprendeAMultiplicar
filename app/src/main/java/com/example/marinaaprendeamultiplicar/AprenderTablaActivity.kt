@@ -5,16 +5,16 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.text.style.UnderlineSpan
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import android.text.style.UnderlineSpan
 
 class AprenderTablaActivity : AppCompatActivity() {
 
     companion object {
         const val NUMERO_TABLA = "NUMERO_TABLA"
-     }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,17 +22,14 @@ class AprenderTablaActivity : AppCompatActivity() {
 
         val numeroTabla = intent.getIntExtra(NUMERO_TABLA, 1)
 
+        // Título con subrayado
         val tvTablaTitulo = findViewById<TextView>(R.id.tvTablaTitulo)
-        val tvNumeroTabla = findViewById<TextView>(R.id.tvNumeroTabla)
+        val titulo =  "Tabla del " + numeroTabla // Usa string resource con placeholder
+//        val tituloSpannable = SpannableString(titulo)
+//        tituloSpannable.setSpan(UnderlineSpan(), 0, titulo.length, 0)
+        tvTablaTitulo.text = titulo.toString()
 
-        val tituloSpannable = SpannableString(tvTablaTitulo.text)
-        tituloSpannable.setSpan(UnderlineSpan(), 0, tituloSpannable.length, 0)
-        tvTablaTitulo.text = tituloSpannable
-
-        val numeroSpannable = SpannableString(tvNumeroTabla.text)
-        numeroSpannable.setSpan(UnderlineSpan(), 0, numeroSpannable.length, 0)
-        tvNumeroTabla.text = numeroSpannable
-
+        // Mostrar tabla de multiplicar
         val tvTablaContenido = findViewById<TextView>(R.id.tvTablaContenido)
         tvTablaContenido.text = generarTablaMultiplicarConColores(numeroTabla)
     }
