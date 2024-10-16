@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.marinaaprendeamultiplicar.databinding.ActivityAprenderTablaBinding
 
-class AprenderTablaActivity<ActivityAprenderTablaBinding> : AppCompatActivity() {
+class AprenderTablaActivity : AppCompatActivity() {
+
+    companion object {
+        const val EXTRA_NUMERO_TABLA = "NUMERO_TABLA"
+    }
 
     private lateinit var binding: ActivityAprenderTablaBinding
 
@@ -16,15 +19,15 @@ class AprenderTablaActivity<ActivityAprenderTablaBinding> : AppCompatActivity() 
         binding = ActivityAprenderTablaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val selectedNumber = intent.getIntExtra("selectedNumber", 1) // Get the selected number
-        generateTabla(selectedNumber)
+        val numeroTabla = intent.getIntExtra(EXTRA_NUMERO_TABLA, 1)
+        generateTabla(numeroTabla)
     }
 
-    private fun generateTabla(number: Int) {
+    private fun generateTabla(numeroTabla: Int) {
         val tablaLayout: LinearLayout = binding.tablaLayout
         for (i in 1..10) {
             val textView = TextView(this)
-            textView.text = "$number x $i = ${number * i}"
+            textView.text = "$numeroTabla x $i = ${numeroTabla * i}"
             tablaLayout.addView(textView)
         }
     }
