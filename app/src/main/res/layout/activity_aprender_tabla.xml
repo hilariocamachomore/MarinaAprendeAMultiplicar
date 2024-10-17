@@ -8,7 +8,9 @@
     <LinearLayout
         android:id="@+id/tablaLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:background="#E83B3B"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,6 +19,15 @@
         app:layout_constraintWidth_percent="0.8">
 
         <!-- Multiplication table content will be added here -->
+        <TextView
+            android:id="@+id/tablaTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:autoSizeMaxTextSize="240sp"
+            android:autoSizeMinTextSize="32sp"
+            android:autoSizeStepGranularity="2sp"
+            android:autoSizeTextType="uniform"
+            android:background="#8BC34A" />
 
     </LinearLayout>
 

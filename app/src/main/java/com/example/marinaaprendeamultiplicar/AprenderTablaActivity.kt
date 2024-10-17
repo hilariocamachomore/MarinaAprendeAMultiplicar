@@ -12,23 +12,23 @@ class AprenderTablaActivity : AppCompatActivity() {
         const val EXTRA_NUMERO_TABLA = "NUMERO_TABLA"
     }
 
-    private lateinit var binding: ActivityAprenderTablaBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAprenderTablaBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_aprender_tabla)
 
         val numeroTabla = intent.getIntExtra(EXTRA_NUMERO_TABLA, 1)
         generateTabla(numeroTabla)
     }
 
     private fun generateTabla(numeroTabla: Int) {
-        val tablaLayout: LinearLayout = binding.tablaLayout
+        val tablaLayout: LinearLayout = findViewById(R.id.tablaLayout)
+        // Get the TextView from the layout
+        val tablaTextView: TextView = findViewById(R.id.tablaTextView)
+
         for (i in 1..10) {
-            val textView = TextView(this)
-            textView.text = "$numeroTabla x $i = ${numeroTabla * i}"
-            tablaLayout.addView(textView)
+            // Append each multiplication line to the TextView
+            val multiplicationLine = "$numeroTabla x $i = ${numeroTabla * i}\n"
+            tablaTextView.append(multiplicationLine)
         }
     }
 }
