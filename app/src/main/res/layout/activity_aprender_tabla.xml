@@ -27,7 +27,8 @@
             android:autoSizeMinTextSize="32sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
-            android:background="#8BC34A" />
+            android:background="#8BC34A"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
