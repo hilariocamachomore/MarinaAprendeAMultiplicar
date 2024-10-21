@@ -23,7 +23,9 @@ class AprenderTablaActivity : AppCompatActivity() {
         generateTabla(numeroTabla)
 
         mediaPlayer = when (numeroTabla) {
-            in 1..5 -> MediaPlayer.create(this, R.raw.tablaunomarina)
+            1 -> MediaPlayer.create(this, R.raw.tabladel01)
+            2 -> MediaPlayer.create(this, R.raw.tabladel02)
+            in 3..5 -> MediaPlayer.create(this, R.raw.tablaunomarina)
             in 6..10 -> MediaPlayer.create(this, R.raw.ca)
             else -> null
         }
