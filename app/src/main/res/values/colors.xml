@@ -25,5 +25,37 @@
     <color name="blue_8">#00796B</color>
     <color name="blue_9">#008876</color>
     <color name="blue_10">#009688</color>
+    <!-- Azules adicionales -->
+    <color name="sky_blue">#87CEEB</color>
+    <color name="navy_blue">#000080</color>
+    <color name="indigo">#4B0082</color>
+    <color name="steel_blue">#4682B4</color>
 
+    <!-- Verdes adicionales -->
+    <color name="green">#008000</color>
+    <color name="dark_green">#006400</color>
+    <color name="lime_green">#32CD32</color>
+    <color name="forest_green">#228B22</color>
+
+    <!-- Rojos adicionales -->
+    <color name="red">#FF0000</color>
+    <color name="dark_red">#8B0000</color>
+    <color name="crimson">#DC143C</color>
+    <color name="firebrick">#B22222</color>
+
+    <!-- Amarillos adicionales -->
+    <color name="yellow">#FFFF00</color>
+    <color name="gold">#FFD700</color>
+    <color name="orange">#FFA500</color>
+    <color name="dark_orange">#FF8C00</color>
+
+    <!-- Grises adicionales -->
+    <color name="gray">#808080</color>
+    <color name="dark_gray">#A9A9A9</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="light_slate_gray">#778899</color>
+
+    <!-- Otros colores -->
+    <color name="pink">#FFC0CB</color>
+    <color name="violet">#EE82EE</color>
 </resources>
