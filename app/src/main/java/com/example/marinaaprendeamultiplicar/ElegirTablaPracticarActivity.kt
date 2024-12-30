@@ -1,5 +1,3 @@
-
-
 package com.example.marinaaprendeamultiplicar
 
 import android.annotation.SuppressLint

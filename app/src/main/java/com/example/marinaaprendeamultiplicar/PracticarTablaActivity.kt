@@ -1,92 +1,214 @@
 package com.example.marinaaprendeamultiplicar
 
 import android.content.Intent
-import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
+import kotlin.math.log
+import kotlin.random.Random
+import android.util.Log
 
 class PracticarTablaActivity : AppCompatActivity() {
 
-    private lateinit var tvPregunta: TextView
-    private lateinit var etRespuesta: EditText
-    private lateinit var btnComprobar: Button
-    private lateinit var tvResultado: TextView
+    companion object {
+        const val NUMERO_TABLA = "NUMERO_TABLA"
+    }
 
-    private var tablaSelec = 0
-    private var numeroPregunta = 0
-    private var resultadoCorrecto = 0
-    private val operacionesFallidas = mutableListOf<Int>()
-    private var aciertosConsecutivos = 0
+    private lateinit var tvPregunta: TextView
+    private lateinit var progressBar: ProgressBar
+    private lateinit var respuesta1: Button
+    private lateinit var respuesta2: Button
+    private lateinit var respuesta3: Button
+    private lateinit var respuesta4: Button
+    private lateinit var respuesta5: Button
+    private lateinit var respuesta6: Button
+
+    private var numeroTabla: Int=1
+    private var respuestaCorrecta = 1
+    private lateinit var countDownTimer: CountDownTimer
+    private lateinit var mediaPlayer: MediaPlayer
+    private val handler = Handler(Looper.getMainLooper())
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_practicar_tabla)
+        Log.d("HECTOR OnCreate", " OnCreate")
+        // Get the table number from the extra
+        numeroTabla = intent.getIntExtra(NUMERO_TABLA, 1)
 
+        // Initialize UI elements
         tvPregunta = findViewById(R.id.tvPregunta)
-        etRespuesta = findViewById(R.id.etRespuesta)
-        btnComprobar = findViewById(R.id.btnComprobar)
-        tvResultado = findViewById(R.id.tvResultado)
+        progressBar = findViewById(R.id.progressBar)
+        respuesta1 = findViewById(R.id.respuesta1)
+        respuesta2 = findViewById(R.id.respuesta2)
+        respuesta3 = findViewById(R.id.respuesta3)
+        respuesta4 = findViewById(R.id.respuesta4)
+        respuesta5 = findViewById(R.id.respuesta5)
+        respuesta6 = findViewById(R.id.respuesta6)
 
-        tablaSelec = intent.extras?.getInt("NUMERO_TABLA") ?: 0
+        // Initialize progress bar
+        progressBar.max = 50
+        progressBar.progress = 0
+
         generarPregunta()
 
-        btnComprobar.setOnClickListener {
-            comprobarRespuesta()
-        }
+        // Set click listeners for answer buttons
+        respuesta1.setOnClickListener { comprobarRespuesta(respuesta1.text.toString().toInt()) }
+        respuesta2.setOnClickListener { comprobarRespuesta(respuesta2.text.toString().toInt()) }
+        respuesta3.setOnClickListener { comprobarRespuesta(respuesta3.text.toString().toInt()) }
+        respuesta4.setOnClickListener { comprobarRespuesta(respuesta4.text.toString().toInt()) }
+        respuesta5.setOnClickListener { comprobarRespuesta(respuesta5.text.toString().toInt()) }
+        respuesta6.setOnClickListener { comprobarRespuesta(respuesta6.text.toString().toInt()) }
     }
 
     private fun generarPregunta() {
-        if (operacionesFallidas.isNotEmpty()) {
-            numeroPregunta = operacionesFallidas.random()
-            operacionesFallidas.remove(numeroPregunta)
-        } else {
-            numeroPregunta = (1..10).random()
+        Log.d("HECTOR ProgressBarProgress", "Progress: ${progressBar.progress}")
+        Log.d("HECTOR numerotabla", "numerotabla: $numeroTabla")
+        // Generate a random number between 1 and 10
+        val numAleatorio = Random.nextInt(1, 11)
+
+        // Display the question
+        tvPregunta.text = "$numeroTabla x $numAleatorio ="
+
+        // Calculate and store the correct answer
+        respuestaCorrecta = numeroTabla * numAleatorio
+
+        // Generate answer options (including the correct one)
+        val respuestas = mutableListOf<Int>()
+        respuestas.add(respuestaCorrecta)
+
+        // Generate incorrect answers
+        while (respuestas.size < 6) {
+            val respuestaIncorrecta = Random.nextInt(1, 101) // Adjust range if needed
+            if (respuestaIncorrecta != respuestaCorrecta && !respuestas.contains(respuestaIncorrecta)) {
+                respuestas.add(respuestaIncorrecta)
+            }
         }
-        resultadoCorrecto = tablaSelec * numeroPregunta
-        tvPregunta.text = "¿Cuánto es $tablaSelec x $numeroPregunta?"
-        etRespuesta.text.clear()
-        tvResultado.text = ""
+
+        // Shuffle the answers
+        respuestas.shuffle()
+
+        // Assign answers to buttons
+        respuesta1.text = respuestas[0].toString()
+        respuesta2.text = respuestas[1].toString()
+        respuesta3.text = respuestas[2].toString()
+        respuesta4.text = respuestas[3].toString()
+        respuesta5.text = respuestas[4].toString()
+        respuesta6.text = respuestas[5].toString()
+
+        iniciarCuentaAtras()
     }
 
-    private fun comprobarRespuesta() {
-        val respuestaUsuario = etRespuesta.text.toString().toIntOrNull()
-        if (respuestaUsuario == resultadoCorrecto) {
-            tvResultado.text = "¡Correcto! ¡Muy bien!"
-            aciertosConsecutivos++
-            if (aciertosConsecutivos >= 10) {
-                // El usuario ha acertado 10 veces seguidas
-                tvResultado.text = "¡Felicidades! ¡Te sabes la tabla del $tablaSelec! Sigue practicando."
-                // Retrasamos el inicio de la actividad principal para que el usuario pueda leer el mensaje
-                tvResultado.postDelayed({
-                    val intent = Intent(this, MainActivity::class.java) // Reemplaza MainActivity con el nombre de tu actividad principal
-                    startActivity(intent)
-                    finish() // Finaliza la actividad actual
-                }, 2000) // 2 segundos de retraso
+    private fun iniciarCuentaAtras() {
+        countDownTimer = object : CountDownTimer(4000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                // You can update a timer UI element here if needed
+            }
+
+            override fun onFinish() {
+                // Time's up! Decrement progress and play sound
+                if (progressBar.progress > 0) {
+                    progressBar.progress--
+                }
+                // Play time's up sound
+                // ... (Add code to play time's up sound) ...
+
+                mostrarRespuestaCorrectaYContinuar()
+            }
+        }.start()
+    }
+
+    private fun comprobarRespuesta(respuestaSeleccionada: Int) {
+        countDownTimer.cancel() // Cancel the timer
+
+        if (respuestaSeleccionada == respuestaCorrecta) {
+            progressBar.progress++
+            // Play correct answer sound
+            // ... (Add code to play correct answer sound) ...
+
+            if (progressBar.progress == progressBar.max) {
+                mostrarVictoriaYVolverAlMenu()
             } else {
-                // Reiniciamos la actividad para la siguiente pregunta
-                reiniciarActividad()
+                generarPregunta() // Generate next question
             }
         } else {
-            tvResultado.text = "Incorrecto. Inténtalo de nuevo."
-            operacionesFallidas.add(numeroPregunta)
-            aciertosConsecutivos = 0 // Reseteamos los aciertos consecutivos
-            // Reiniciamos la actividad para la siguiente pregunta
-            reiniciarActividad()
+            // Incorrect answer: decrement progress and play sound
+            if (progressBar.progress >= 3) {
+                progressBar.progress -= 3
+            } else {
+                progressBar.progress = 0
+            }
+            // Play incorrect answer sound
+            // ... (Add code to play incorrect answer sound) ...
+
+            mostrarRespuestaCorrectaYContinuar()
         }
     }
 
-    private fun reiniciarActividad() {
-        // Limpiamos el EditText y el TextView de resultado
-        etRespuesta.text.clear()
-        tvResultado.text = ""
-        // Reiniciamos la actividad
-        val intent = Intent(this, PracticarTablaActivity::class.java)
-        intent.putExtra("NUMERO_TABLA", tablaSelec)
-        startActivity(intent)
-        finish()
+    private fun mostrarRespuestaCorrectaYContinuar() {
+        countDownTimer.cancel()
+        // Show correct answer in tvPregunta
+        tvPregunta.text = "${tvPregunta.text} $respuestaCorrecta"
+
+        // Disable buttons
+        desactivarBotones()
+
+        // Wait for 2 seconds and then generate the next question
+        handler.postDelayed({
+            habilitarBotones()
+            generarPregunta()
+        }, 2000)
+    }
+
+    private fun mostrarVictoriaYVolverAlMenu() {
+        countDownTimer.cancel()
+        // Play victory sound
+        // ... (Add code to play victory sound) ...
+
+        // Show victory message in tvPregunta
+        tvPregunta.text = "¡¡¡VICTORIA!!!"
+
+        // Disable buttons
+        desactivarBotones()
+
+        // Wait for 3 seconds and then navigate to main menu
+        handler.postDelayed({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish() // Optional: Finish the current activity
+        }, 3000)
+    }
+
+    private fun desactivarBotones() {
+        respuesta1.isEnabled = false
+        respuesta2.isEnabled = false
+        respuesta3.isEnabled = false
+        respuesta4.isEnabled = false
+        respuesta5.isEnabled = false
+        respuesta6.isEnabled = false
+    }
+
+    private fun habilitarBotones() {
+        respuesta1.isEnabled = true
+        respuesta2.isEnabled = true
+        respuesta3.isEnabled = true
+        respuesta4.isEnabled = true
+        respuesta5.isEnabled = true
+        respuesta6.isEnabled = true
+    }
+
+    override fun onBackPressed() {
+        if (::countDownTimer.isInitialized) { // Verificar si countDownTimer está inicializado
+            countDownTimer.cancel()
+        }
+
+        super.onBackPressed()
     }
 }

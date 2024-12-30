@@ -1,56 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/blue_10"
+    android:columnCount="3"
+    android:padding="26dp"
+    android:rowCount="6">
 
-    <EditText
-        android:id="@+id/etRespuesta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:hint="Escribe tu respuesta"
-        android:inputType="number"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPregunta" />
+    <TextView
+        android:layout_height="6dp"
+        android:layout_rowWeight="0.25"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="50sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tvPregunta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
-        android:text="¿Cuánto es 5 x 3?"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/light_yellow"
+        android:text="7x5="
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/btnComprobar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Comprobar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etRespuesta" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:layout_columnSpan="3"
+        android:layout_gravity="fill_horizontal"
+        android:max="50"
+        android:maxHeight="16dp"
+        android:minHeight="20dp"
+        android:padding="8dp"
+        android:progressDrawable="@drawable/rounded_progressbar" />
 
     <TextView
-        android:id="@+id/tvResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="6dp"
+        android:layout_rowWeight="0.1"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="50sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         android:text=""
-        android:textSize="18sp"
-        app:layout_constraintTop_toBottomOf="@id/btnComprobar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:textAlignment="center"
+        android:textSize="14sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/respuesta1"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="200sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/light_yellow"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="40"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/respuesta2"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="200sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/dark_red"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="54"
+        android:textColor="@color/white"
+         />
+
+    <Button
+        android:id="@+id/respuesta3"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="200sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/violet"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="62"
+        android:textColor="@color/white"
+         />
+
+    <Button
+        android:id="@+id/respuesta4"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="200sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/light_orange"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="71"
+        android:textColor="@color/white"
+         />
+
+    <Button
+        android:id="@+id/respuesta5"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="200sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/purple_500"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="86"
+        android:textColor="@color/white"
+         />
+
+    <Button
+        android:id="@+id/respuesta6"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="200sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/red"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="62"
+        android:textColor="@color/white"
+        />
+
+
+</GridLayout>
