@@ -34,6 +34,7 @@ class PracticarTablaActivity : AppCompatActivity() {
     private lateinit var countDownTimer: CountDownTimer
     private lateinit var mediaPlayer: MediaPlayer
     private val handler = Handler(Looper.getMainLooper())
+    private var previousQuestion: Pair<Int, Int>? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +73,15 @@ class PracticarTablaActivity : AppCompatActivity() {
         Log.d("HECTOR ProgressBarProgress", "Progress: ${progressBar.progress}")
         Log.d("HECTOR numerotabla", "numerotabla: $numeroTabla")
         // Generate a random number between 1 and 10
-        val numAleatorio = Random.nextInt(1, 11)
+        var numAleatorio: Int
+
+        // Generate a question different from the previous one
+        do {
+            numAleatorio = Random.nextInt(1, 11)
+        } while (previousQuestion != null && previousQuestion == Pair(numeroTabla, numAleatorio))
+
+        // Store the current question as the previous question for the next iteration
+        previousQuestion = Pair(numeroTabla, numAleatorio)
 
         // Display the question
         tvPregunta.text = "$numeroTabla x $numAleatorio ="
@@ -84,6 +93,7 @@ class PracticarTablaActivity : AppCompatActivity() {
         val respuestas = mutableListOf<Int>()
         respuestas.add(respuestaCorrecta)
 
+
         // Generate incorrect answers
         while (respuestas.size < 6) {
             val respuestaIncorrecta = Random.nextInt(1, 101) // Adjust range if needed
@@ -94,6 +104,8 @@ class PracticarTablaActivity : AppCompatActivity() {
 
         // Shuffle the answers
         respuestas.shuffle()
+
+        Log.d("HECTOR respuestas", "respuestas: $respuestas")
 
         // Assign answers to buttons
         respuesta1.text = respuestas[0].toString()
