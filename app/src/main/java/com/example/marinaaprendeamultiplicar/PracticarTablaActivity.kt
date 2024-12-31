@@ -35,6 +35,10 @@ class PracticarTablaActivity : AppCompatActivity() {
     private lateinit var mediaPlayer: MediaPlayer
     private val handler = Handler(Looper.getMainLooper())
     private var previousQuestion: Pair<Int, Int>? = null
+    private var correctSound: MediaPlayer? = null
+    private var incorrectSound: MediaPlayer? = null
+    private var endTimeSound: MediaPlayer? = null
+    private var victorySound: MediaPlayer? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +57,13 @@ class PracticarTablaActivity : AppCompatActivity() {
         respuesta4 = findViewById(R.id.respuesta4)
         respuesta5 = findViewById(R.id.respuesta5)
         respuesta6 = findViewById(R.id.respuesta6)
+
+        //sonidos
+        correctSound = MediaPlayer.create(this, R.raw.correcto)
+        incorrectSound = MediaPlayer.create(this, R.raw.incorrecto)
+        endTimeSound = MediaPlayer.create(this, R.raw.fin_tiempo)
+        victorySound = MediaPlayer.create(this, R.raw.victoria)
+
 
         // Initialize progress bar
         progressBar.max = 50
@@ -126,6 +137,7 @@ class PracticarTablaActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 // Time's up! Decrement progress and play sound
+                endTimeSound?.start() // Play the correct sound
                 if (progressBar.progress > 0) {
                     progressBar.progress--
                 }
@@ -141,6 +153,7 @@ class PracticarTablaActivity : AppCompatActivity() {
         countDownTimer.cancel() // Cancel the timer
 
         if (respuestaSeleccionada == respuestaCorrecta) {
+            correctSound?.start() // Play the correct sound
             progressBar.progress++
             // Play correct answer sound
             // ... (Add code to play correct answer sound) ...
@@ -152,6 +165,7 @@ class PracticarTablaActivity : AppCompatActivity() {
             }
         } else {
             // Incorrect answer: decrement progress and play sound
+            incorrectSound?.start() // Play the incorrect sound
             if (progressBar.progress >= 3) {
                 progressBar.progress -= 3
             } else {
@@ -185,6 +199,7 @@ class PracticarTablaActivity : AppCompatActivity() {
         // ... (Add code to play victory sound) ...
 
         // Show victory message in tvPregunta
+        victorySound?.start()
         tvPregunta.text = "¡¡¡VICTORIA!!!"
 
         // Disable buttons
@@ -222,5 +237,17 @@ class PracticarTablaActivity : AppCompatActivity() {
         }
 
         super.onBackPressed()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        correctSound?.release()
+        correctSound = null
+        incorrectSound?.release()
+        incorrectSound = null
+        endTimeSound?.release()
+        endTimeSound = null
+        victorySound?.release()
+        victorySound = null
     }
 }
