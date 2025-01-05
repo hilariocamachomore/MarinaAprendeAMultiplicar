@@ -8,14 +8,13 @@
     android:background="@color/blue_10"
     android:padding="26dp">
 
-
     <GridLayout
-        android:id="@+id/gridLayout"
+        android:id="@+id/gridLayoutArriba"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:columnCount="3"
-        android:rowCount="6"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        android:rowCount="2"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayoutAbajo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,15 +37,27 @@
             android:layout_rowWeight="1"
             android:layout_columnSpan="3"
             android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMaxTextSize="120sp"
             android:autoSizeMinTextSize="8sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
             android:backgroundTint="@color/light_yellow"
+            android:singleLine="true"
             android:text="1x1="
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="14sp" />
+    </GridLayout>
+    <GridLayout
+        android:id="@+id/gridLayoutAbajo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:columnCount="3"
+        android:rowCount="2"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayoutArriba">
 
         <Button
             android:id="@+id/respuesta1"
@@ -70,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="120sp"
+            android:autoSizeMaxTextSize="80sp"
             android:autoSizeMinTextSize="8sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
@@ -86,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="120sp"
+            android:autoSizeMaxTextSize="80sp"
             android:autoSizeMinTextSize="8sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
@@ -102,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="120sp"
+            android:autoSizeMaxTextSize="80sp"
             android:autoSizeMinTextSize="8sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
@@ -118,7 +129,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="120sp"
+            android:autoSizeMaxTextSize="80sp"
             android:autoSizeMinTextSize="8sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
@@ -134,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="120sp"
+            android:autoSizeMaxTextSize="80sp"
             android:autoSizeMinTextSize="8sp"
             android:autoSizeStepGranularity="2sp"
             android:autoSizeTextType="uniform"
@@ -161,6 +172,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/gridLayoutAbajo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
