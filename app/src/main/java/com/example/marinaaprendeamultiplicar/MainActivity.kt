@@ -39,6 +39,13 @@ class MainActivity : AppCompatActivity() {
         btnPracticaTodas.setOnClickListener {
             // Aquí iniciarás la Activity "Practica Todas las Tablas"
             Toast.makeText(this, "Practica Todas las Tablas", Toast.LENGTH_SHORT).show()
+            val intent3 = Intent(this, PracticarTodasActivity::class.java)
+            startActivity(intent3)
+
+
+
+
+
             // En el futuro, reemplazarás esto con:
             // val intent = Intent(this, PracticaTodasActivity::class.java)
             // startActivity(intent)
