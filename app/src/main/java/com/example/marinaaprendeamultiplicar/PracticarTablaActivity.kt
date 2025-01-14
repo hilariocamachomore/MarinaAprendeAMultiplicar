@@ -13,6 +13,7 @@ import android.widget.TextView
 import kotlin.math.log
 import kotlin.random.Random
 import android.util.Log
+import android.graphics.Color
 
 class PracticarTablaActivity : AppCompatActivity() {
 
@@ -143,7 +144,7 @@ class PracticarTablaActivity : AppCompatActivity() {
                 }
                 // Play time's up sound
                 // ... (Add code to play time's up sound) ...
-
+                tvPregunta.setTextColor(Color.RED)
                 mostrarRespuestaCorrectaYContinuar()
             }
         }.start()
@@ -173,7 +174,7 @@ class PracticarTablaActivity : AppCompatActivity() {
             }
             // Play incorrect answer sound
             // ... (Add code to play incorrect answer sound) ...
-
+            tvPregunta.setTextColor(Color.RED)
             mostrarRespuestaCorrectaYContinuar()
         }
     }
@@ -188,6 +189,7 @@ class PracticarTablaActivity : AppCompatActivity() {
 
         // Wait for 2 seconds and then generate the next question
         handler.postDelayed({
+            tvPregunta.setTextColor(Color.WHITE)
             habilitarBotones()
             generarPregunta()
         }, 2000)
@@ -200,7 +202,7 @@ class PracticarTablaActivity : AppCompatActivity() {
 
         // Show victory message in tvPregunta
         victorySound?.start()
-        tvPregunta.text = "¡¡¡VICTORIA!!!"
+        tvPregunta.text = "¡¡VICTORIA!!"
 
         // Disable buttons
         desactivarBotones()
@@ -210,7 +212,7 @@ class PracticarTablaActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish() // Optional: Finish the current activity
-        }, 3000)
+        }, 4000)
     }
 
     private fun desactivarBotones() {
