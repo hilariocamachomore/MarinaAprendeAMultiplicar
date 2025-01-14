@@ -45,7 +45,7 @@ class PracticarTablaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practicar_tabla)
-        Log.d("HECTOR OnCreate", " OnCreate")
+        //Log.d("HECTOR OnCreate", " OnCreate")
         // Get the table number from the extra
         numeroTabla = intent.getIntExtra(NUMERO_TABLA, 1)
 
@@ -82,8 +82,8 @@ class PracticarTablaActivity : AppCompatActivity() {
     }
 
     private fun generarPregunta() {
-        Log.d("HECTOR ProgressBarProgress", "Progress: ${progressBar.progress}")
-        Log.d("HECTOR numerotabla", "numerotabla: $numeroTabla")
+        //Log.d("HECTOR ProgressBarProgress", "Progress: ${progressBar.progress}")
+        //Log.d("HECTOR numerotabla", "numerotabla: $numeroTabla")
         // Generate a random number between 1 and 10
         var numAleatorio: Int
 
@@ -117,7 +117,7 @@ class PracticarTablaActivity : AppCompatActivity() {
         // Shuffle the answers
         respuestas.shuffle()
 
-        Log.d("HECTOR respuestas", "respuestas: $respuestas")
+        //Log.d("HECTOR respuestas", "respuestas: $respuestas")
 
         // Assign answers to buttons
         respuesta1.text = respuestas[0].toString()
