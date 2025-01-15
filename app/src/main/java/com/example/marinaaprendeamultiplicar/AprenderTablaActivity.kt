@@ -41,8 +41,14 @@ class AprenderTablaActivity : AppCompatActivity() {
         mediaPlayer = when (numeroTabla) {
             1 -> MediaPlayer.create(this, R.raw.tabladel01)
             2 -> MediaPlayer.create(this, R.raw.tabladel02)
-            in 3..5 -> MediaPlayer.create(this, R.raw.tablaunomarina)
-            in 6..10 -> MediaPlayer.create(this, R.raw.ca)
+            3 -> MediaPlayer.create(this, R.raw.tabladel03)
+            4 -> MediaPlayer.create(this, R.raw.tabladel04)
+            5 -> MediaPlayer.create(this, R.raw.tabladel05)
+            6 -> MediaPlayer.create(this, R.raw.tabladel06)
+            7 -> MediaPlayer.create(this, R.raw.tabladel07)
+            8 -> MediaPlayer.create(this, R.raw.tabladel08)
+            9 -> MediaPlayer.create(this, R.raw.tabladel09)
+            10 -> MediaPlayer.create(this, R.raw.tabladel10)
             else -> null
         }
 
