@@ -131,7 +131,7 @@ class PracticarTablaActivity : AppCompatActivity() {
     }
 
     private fun iniciarCuentaAtras() {
-        countDownTimer = object : CountDownTimer(4000, 1000) {
+        countDownTimer = object : CountDownTimer(6000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 // You can update a timer UI element here if needed
             }

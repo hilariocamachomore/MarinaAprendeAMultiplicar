@@ -6,12 +6,28 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import android.media.MediaPlayer
+import androidx.constraintlayout.widget.ConstraintLayout
+import kotlin.random.Random
 
 class AprenderTablaActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_NUMERO_TABLA = "NUMERO_TABLA"
     }
+
+    val backgroundDrawables = listOf(
+        R.drawable.formasrosa,
+        R.drawable.azulcorazones,
+        R.drawable.azulestrellas,
+        R.drawable.dibujitos,
+        R.drawable.difuminado,
+        R.drawable.doradoconestrellas,
+        R.drawable.rayasazules,
+        R.drawable.rosaconcorazones,
+        R.drawable.verdecorazones,
+        R.drawable.verdeguirnalda,
+        R.drawable.estrellitas
+    )
 
     private var mediaPlayer: MediaPlayer? = null
 
@@ -29,6 +45,11 @@ class AprenderTablaActivity : AppCompatActivity() {
             in 6..10 -> MediaPlayer.create(this, R.raw.ca)
             else -> null
         }
+
+        // Set random background
+        val randomIndex = Random.nextInt(backgroundDrawables.size)
+        val randomBackground = backgroundDrawables[randomIndex]
+        findViewById<ConstraintLayout>(R.id.clAprenderTabla).background = getDrawable(randomBackground)
 
         mediaPlayer?.isLooping = true
         mediaPlayer?.start()
