@@ -67,7 +67,7 @@ class PracticarTablaActivity : AppCompatActivity() {
 
 
         // Initialize progress bar
-        progressBar.max = 50
+        progressBar.max = 30
         progressBar.progress = 0
 
         generarPregunta()
@@ -162,7 +162,9 @@ class PracticarTablaActivity : AppCompatActivity() {
             if (progressBar.progress == progressBar.max) {
                 mostrarVictoriaYVolverAlMenu()
             } else {
-                generarPregunta() // Generate next question
+                //generarPregunta() // Generate next question aquiaqui
+                tvPregunta.setTextColor(Color.GREEN)
+                mostrarRespuestaCorrectaYContinuar()
             }
         } else {
             // Incorrect answer: decrement progress and play sound
