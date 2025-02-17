@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Marina aprende a multiplicar</string>
+    <string name="app_name">Marina multiplica</string>
     <string name="tabla_de_multiplicar_content_description">Tabla de multiplicar del número %d</string>
 </resources>
