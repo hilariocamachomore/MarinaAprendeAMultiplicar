@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -14,6 +15,10 @@ class MainActivity : AppCompatActivity() {
         val btnAprendeTablas = findViewById<Button>(R.id.btnAprendeTablas)
         val btnPracticaTablas = findViewById<Button>(R.id.btnPracticaTablas)
         val btnPracticaTodas = findViewById<Button>(R.id.btnPracticaTodas)
+
+        // Botones de la barra de herramientas
+        val btnPerfil = findViewById<ImageButton>(R.id.btnPerfil)
+        val btnEstado = findViewById<ImageButton>(R.id.btnEstado)
 
         btnAprendeTablas.setOnClickListener {
             // Aquí iniciarás la Activity "Aprende las Tablas"
@@ -42,6 +47,19 @@ class MainActivity : AppCompatActivity() {
             val intent3 = Intent(this, PracticarTodasActivity::class.java)
             startActivity(intent3)
 
+            btnPerfil.setOnClickListener {
+                // Aquí irá el código para abrir la actividad de Perfil
+                Toast.makeText(this, "Has clicado perfil", Toast.LENGTH_SHORT).show()
+                // val intent = Intent(this, PerfilActivity::class.java)
+                // startActivity(intent)
+            }
+
+            btnEstado.setOnClickListener {
+                // Aquí irá el código para abrir la actividad de Estado
+                Toast.makeText(this, "Has clicado estado", Toast.LENGTH_SHORT).show()
+                // val intent = Intent(this, EstadoActivity::class.java)
+                // startActivity(intent)
+            }
 
 
 

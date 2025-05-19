@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue"
+    android:background="@color/blue_10"
     android:columnCount="3"
     android:padding="16dp"
-    android:rowCount="3">
+    android:rowCount="10">
 
     <Button
         android:id="@+id/btnAprendeTablas"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_rowWeight="1"
+        android:layout_rowWeight="3"
         android:layout_columnSpan="3"
         android:layout_columnWeight="1"
         android:autoSizeMaxTextSize="100sp"
         android:autoSizeMinTextSize="8sp"
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
-        android:backgroundTint="@color/blue_1"
+        android:backgroundTint="@color/light_orange"
         android:text="Aprende las tablas"
         android:textAllCaps="false"
         android:textColor="@color/white" />
@@ -27,14 +29,14 @@
         android:id="@+id/btnPracticaTablas"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_rowWeight="1"
+        android:layout_rowWeight="3"
         android:layout_columnSpan="3"
         android:layout_columnWeight="1"
         android:autoSizeMaxTextSize="100sp"
         android:autoSizeMinTextSize="8sp"
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
-        android:backgroundTint="@color/blue_6"
+        android:backgroundTint="@color/light_red"
         android:text="Practica la tabla"
         android:textAllCaps="false"
         android:textColor="@color/white" />
@@ -43,24 +45,58 @@
         android:id="@+id/btnPracticaTodas"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_rowWeight="1"
+        android:layout_rowWeight="3"
         android:layout_columnSpan="3"
         android:layout_columnWeight="1"
         android:autoSizeMaxTextSize="100sp"
         android:autoSizeMinTextSize="8sp"
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
-        android:backgroundTint="@color/blue_9"
+        android:backgroundTint="@color/blue_4"
         android:text="Practica las tablas"
         android:textAllCaps="false"
         android:textColor="@color/white" />
 
-    <!-- Espacio vacío para la última fila -->
-    <!-- <Space
+
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
-        android:layout_columnSpan="3"--> />
+        android:layout_columnSpan="3"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/btnPerfil"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/perfil"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/perfil" />
+
+        <ImageButton
+            android:id="@+id/btnEstado"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/estado"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/estado" />
+
+        <!--<ImageButton
+            android:id="@+id/btnClasificacion"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/clasificacion"
+            android:padding="0dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/clasificacion" />-->
+    </LinearLayout>
 
 </GridLayout>
+

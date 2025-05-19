@@ -1,158 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_10"
-    android:padding="26dp">
+    android:background="@color/light_blue"
+    android:columnCount="3"
+    android:padding="16dp"
+    android:rowCount="3">
 
-
-    <TextView
-        android:id="@+id/tvPregunta"
+    <Button
+        android:id="@+id/btnAprendeTablas"
         android:layout_width="0dp"
-        android:layout_height="113dp"
-        android:layout_marginTop="64dp"
-        android:autoSizeMaxTextSize="55sp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="100sp"
         android:autoSizeMinTextSize="8sp"
         android:autoSizeStepGranularity="2sp"
         android:autoSizeTextType="uniform"
-        android:backgroundTint="@color/light_yellow"
-        android:singleLine="true"
-        android:text="¡¡VICTORIA!!"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/gridLayoutAbajo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:backgroundTint="@color/blue_1"
+        android:text="Aprende las tablas"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
-    <GridLayout
-        android:id="@+id/gridLayoutAbajo"
+    <Button
+        android:id="@+id/btnPracticaTablas"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:columnCount="3"
-        android:rowCount="2"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPregunta">
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/blue_6"
+        android:text="Practica la tabla"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
-        <Button
-            android:id="@+id/respuesta1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="80sp"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/light_yellow"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="40"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/respuesta2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="80sp"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/dark_red"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="54"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/respuesta3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="80sp"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/violet"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="62"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/respuesta4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="80sp"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/light_orange"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="71"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/respuesta5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="80sp"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/purple_500"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="86"
-            android:textColor="@color/white" />
-
-        <Button
-            android:id="@+id/respuesta6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:autoSizeMaxTextSize="80sp"
-            android:autoSizeMinTextSize="8sp"
-            android:autoSizeStepGranularity="2sp"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="@color/red"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="62"
-            android:textColor="@color/white" />
-
-    </GridLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
+    <Button
+        android:id="@+id/btnPracticaTodas"
         android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:max="50"
-        android:maxHeight="16dp"
-        android:minHeight="20dp"
-        android:padding="8dp"
-        android:progressDrawable="@drawable/rounded_progressbar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayoutAbajo" />
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnSpan="3"
+        android:layout_columnWeight="1"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="8sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:backgroundTint="@color/blue_9"
+        android:text="Practica las tablas"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Espacio vacío para la última fila -->
+    <!-- <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_rowWeight="1"
+        android:layout_columnWeight="1"
+        android:layout_columnSpan="3"/>-->
+
+</GridLayout>
+
