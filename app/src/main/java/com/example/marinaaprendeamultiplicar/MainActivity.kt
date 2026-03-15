@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val btnPracticaTodas = findViewById<Button>(R.id.btnPracticaTodas)
 
         // Botones de la barra de herramientas
-        val btnPerfil = findViewById<ImageButton>(R.id.btnPerfil)
+        //val btnPerfil = findViewById<ImageButton>(R.id.btnPerfil)
         val btnEstado = findViewById<ImageButton>(R.id.btnEstado)
 
         btnAprendeTablas.setOnClickListener {
@@ -47,12 +47,12 @@ class MainActivity : AppCompatActivity() {
             val intent3 = Intent(this, PracticarTodasActivity::class.java)
             startActivity(intent3)
 
-            btnPerfil.setOnClickListener {
-                // Aquí irá el código para abrir la actividad de Perfil
-                Toast.makeText(this, "Has clicado perfil", Toast.LENGTH_SHORT).show()
-                // val intent = Intent(this, PerfilActivity::class.java)
-                // startActivity(intent)
-            }
+//            btnPerfil.setOnClickListener {
+//                // Aquí irá el código para abrir la actividad de Perfil
+//                Toast.makeText(this, "Has clicado perfil", Toast.LENGTH_SHORT).show()
+//                // val intent = Intent(this, PerfilActivity::class.java)
+//                // startActivity(intent)
+//            }
 
             btnEstado.setOnClickListener {
                 // Aquí irá el código para abrir la actividad de Estado

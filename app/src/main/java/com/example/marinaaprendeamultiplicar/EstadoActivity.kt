@@ -16,20 +16,20 @@ class EstadoActivity : AppCompatActivity() {
     private lateinit var tablaEstado: TableLayout
 
     // Datos de ejemplo (deberás obtener estos datos de tu lógica de la aplicación)
-    data class EstadoTabla(val nombreTabla: String, val realizado: Boolean, val mejorTiempo: String, val premios: Int)
+    data class EstadoTabla(val nombreTabla: String, val superado: Int, val mejorTiempo: String, val premios: Int)
 
     private val datosTablas = listOf(
-        EstadoTabla("Tabla del 1", true, "00:45", 2),
-        EstadoTabla("Tabla del 2", true, "00:52", 1),
-        EstadoTabla("Tabla del 3", false, "-", 0),
-        EstadoTabla("Tabla del 4", true, "01:10", 3),
-        EstadoTabla("Tabla del 5", false, "-", 0),
-        EstadoTabla("Tabla del 6", true, "00:58", 1),
-        EstadoTabla("Tabla del 7", false, "-", 0),
-        EstadoTabla("Tabla del 8", true, "01:15", 2),
-        EstadoTabla("Tabla del 9", false, "-", 0),
-        EstadoTabla("Tabla del 10", true, "00:40", 3),
-        EstadoTabla("Todas", false, "-", 0) // Fila para "Todas las tablas"
+        EstadoTabla("Tabla del 1", 1, "00:45", 2),
+        EstadoTabla("Tabla del 2", 3, "00:52", 1),
+        EstadoTabla("Tabla del 3", 0, "-", 0),
+        EstadoTabla("Tabla del 4", 4, "01:10", 3),
+        EstadoTabla("Tabla del 5", 0, "-", 0),
+        EstadoTabla("Tabla del 6", 7, "00:58", 1),
+        EstadoTabla("Tabla del 7", 0, "-", 0),
+        EstadoTabla("Tabla del 8", 5, "01:15", 2),
+        EstadoTabla("Tabla del 9", 0, "-", 0),
+        EstadoTabla("Tabla del 10", 3, "00:40", 3),
+        EstadoTabla("Todas", 0, "-", 0) // Fila para "Todas las tablas"
         // Puedes añadir una duodécima fila si es necesario, o ajustar el bucle
     )
 
@@ -65,8 +65,7 @@ class EstadoActivity : AppCompatActivity() {
             tableRow.addView(crearTextViewCelda(estado.nombreTabla))
 
             // Columna "Realizado"
-            val realizadoTexto = if (estado.realizado) "Sí" else "No"
-            tableRow.addView(crearTextViewCelda(realizadoTexto))
+            tableRow.addView(crearTextViewCelda(estado.superado.toString()))
 
             // Columna "Mejor Tiempo"
             tableRow.addView(crearTextViewCelda(estado.mejorTiempo))

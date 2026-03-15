@@ -77,12 +77,12 @@
                     android:textStyle="bold" />
             </TableRow>
 
-           <!-- <TableRow>
+           <TableRow>
                 <TextView android:text="1" android:layout_weight="1" android:gravity="center" android:padding="8dp"/>
                 <TextView android:text="3" android:layout_weight="1" android:gravity="center" android:padding="8dp"/>
                 <TextView android:text="00:50" android:layout_weight="1" android:gravity="center" android:padding="8dp"/>
                 <TextView android:text="🏆🏆" android:layout_weight="1" android:gravity="center" android:padding="8dp"/>
-            </TableRow>-->
+            </TableRow>
 
 
         </TableLayout>

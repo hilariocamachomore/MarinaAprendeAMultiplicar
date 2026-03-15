@@ -67,7 +67,7 @@
         android:orientation="horizontal">
 
 
-        <ImageButton
+        <!--<ImageButton
             android:id="@+id/btnPerfil"
             android:layout_width="60dp"
             android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
             android:contentDescription="@string/perfil"
             android:padding="2dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/perfil" />
+            android:src="@drawable/perfil" />-->
 
         <ImageButton
             android:id="@+id/btnEstado"
