@@ -56,7 +56,7 @@ class EstadoActivity : AppCompatActivity() {
 
             // Alternar colores de fondo para mejor legibilidad
             if (i % 2 == 0) {
-                tableRow.setBackgroundColor(ContextCompat.getColor(this, R.color.dark_gray))
+                tableRow.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_4))
             } else {
                 tableRow.setBackgroundColor(ContextCompat.getColor(this, R.color.orange))
             }
@@ -77,7 +77,7 @@ class EstadoActivity : AppCompatActivity() {
         }
     }
 
-    private fun crearTextViewCelda(texto: String, esNegrita: Boolean = false): TextView {
+    private fun crearTextViewCelda(texto: String, esNegrita: Boolean = true): TextView {
         val textView = TextView(this)
         val params = TableRow.LayoutParams(
             0, // width = 0dp para que funcione el weight
@@ -86,8 +86,10 @@ class EstadoActivity : AppCompatActivity() {
         )
         textView.layoutParams = params
         textView.text = texto
+        textView.setTextColor(ContextCompat.getColor(this, R.color.white))
+        textView.textSize = 16f
         textView.gravity = Gravity.CENTER
-        textView.setPadding(8, 8, 8, 8) // Añade un poco de padding a las celdas
+        textView.setPadding(8, 18, 8, 18) // Añade un poco de padding a las celdas
 
         if (esNegrita) {
             textView.setTypeface(null, Typeface.BOLD)

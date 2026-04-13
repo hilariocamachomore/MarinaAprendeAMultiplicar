@@ -20,7 +20,7 @@
         android:autoSizeTextType="uniform"
         android:backgroundTint="@color/light_yellow"
         android:singleLine="true"
-        android:text="¡¡VICTORIA!!"
+        android:text="pregunta"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="14sp"

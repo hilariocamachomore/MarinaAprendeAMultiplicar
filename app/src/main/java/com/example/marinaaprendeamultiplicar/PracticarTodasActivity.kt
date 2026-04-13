@@ -61,7 +61,7 @@ class PracticarTodasActivity : AppCompatActivity() {
 
 
         // Initialize progress bar
-        progressBar.max = 50
+        progressBar.max = 8
         progressBar.progress = 0
 
         generarPregunta()
@@ -157,7 +157,9 @@ class PracticarTodasActivity : AppCompatActivity() {
             if (progressBar.progress == progressBar.max) {
                 mostrarVictoriaYVolverAlMenu()
             } else {
-                generarPregunta() // Generate next question
+                //generarPregunta() // Generate next question
+                tvPregunta.setTextColor(Color.GREEN)
+                mostrarRespuestaCorrectaYContinuar()
             }
         } else {
             // Incorrect answer: decrement progress and play sound
@@ -187,7 +189,7 @@ class PracticarTodasActivity : AppCompatActivity() {
             tvPregunta.setTextColor(Color.WHITE)
             habilitarBotones()
             generarPregunta()
-        }, 2000)
+        }, 1000)
     }
 
     private fun mostrarVictoriaYVolverAlMenu() {

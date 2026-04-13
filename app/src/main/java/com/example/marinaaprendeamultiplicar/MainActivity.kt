@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         btnAprendeTablas.setOnClickListener {
             // Aquí iniciarás la Activity "Aprende las Tablas"
             // Por ahora, mostraremos un Toast como ejemplo
-            Toast.makeText(this, "Aprende las Tablas", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Aprende las Tablas", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, ElegirTablaAprenderActivity::class.java)
             startActivity(intent)
             // En el futuro, reemplazarás esto con:
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         btnPracticaTablas.setOnClickListener {
             // Aquí iniciarás la Activity "Practica las Tablas"
-            Toast.makeText(this, "Practica la tabla", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Practica la tabla", Toast.LENGTH_SHORT).show()
             val intent2 = Intent(this, ElegirTablaPracticarActivity::class.java)
             startActivity(intent2)
             // En el futuro, reemplazarás esto con:
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         btnPracticaTodas.setOnClickListener {
             // Aquí iniciarás la Activity "Practica Todas las Tablas"
-            Toast.makeText(this, "Practica todas las tablas", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Practica todas las tablas", Toast.LENGTH_SHORT).show()
             val intent3 = Intent(this, PracticarTodasActivity::class.java)
             startActivity(intent3)
 
@@ -56,9 +56,9 @@ class MainActivity : AppCompatActivity() {
 
             btnEstado.setOnClickListener {
                 // Aquí irá el código para abrir la actividad de Estado
-                Toast.makeText(this, "Has clicado estado", Toast.LENGTH_SHORT).show()
-                 val intent = Intent(this, EstadoActivity::class.java)
-                 startActivity(intent)
+                //Toast.makeText(this, "Has clicado estado", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, EstadoActivity::class.java)
+                startActivity(intent)
             }
 
 
