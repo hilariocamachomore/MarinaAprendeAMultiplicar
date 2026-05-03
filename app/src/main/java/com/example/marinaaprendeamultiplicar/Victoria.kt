@@ -1,9 +1,11 @@
 package com.example.marinaaprendeamultiplicar
 
 import android.content.ContentValues
+import android.content.Intent
 import android.graphics.Color
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,9 @@ class Victoria : AppCompatActivity() {
     var tvTiempoAnterior: TextView? = null
 
     var tvNuevoRecord: TextView? = null
+
+    var btnEstadoVictoria: ImageButton? = null
+
 
 
     // 1. Declarar la variable del reproductor
@@ -39,6 +44,8 @@ class Victoria : AppCompatActivity() {
         tvTiempoAnterior = findViewById(R.id.tvTiempoAnterior)
 
         tvNuevoRecord = findViewById(R.id.tvNuevoRecord)
+
+        btnEstadoVictoria = findViewById(R.id.btnEstadoVictoria)
 
 
         // 2. Inicializar y reproducir el sonido de victoria
@@ -123,6 +130,13 @@ class Victoria : AppCompatActivity() {
         bd.close()
 
         //---------------
+
+        btnEstadoVictoria?.setOnClickListener {
+            // Aquí irá el código para abrir la actividad de Estado
+            //Toast.makeText(this, "Has clicado estado", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, EstadoActivity::class.java)
+            startActivity(intent)
+        }
 
 // Ahora ya puedes guardar 'tiempoFormateado' o 'tiempoMilis' en tu DB
     }

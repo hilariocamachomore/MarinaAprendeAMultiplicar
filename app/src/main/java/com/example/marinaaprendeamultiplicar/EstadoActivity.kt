@@ -1,12 +1,16 @@
 package com.example.marinaaprendeamultiplicar
 
+import android.content.ContentValues
+import android.content.Intent
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.widget.Button
 import android.widget.TableLayout
 import android.widget.TableRow
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import com.example.marinaaprendeamultiplicar.SQLite.SQLite
 
@@ -21,6 +25,7 @@ class EstadoActivity : AppCompatActivity() {
         // Fondo verde para la pantalla
         window.decorView.setBackgroundColor(ContextCompat.getColor(this, R.color.blue_9))
 
+        val btnReiniciar = findViewById<Button>(R.id.btnReiniciarResultados)
         tablaEstado = findViewById(R.id.tablaEstado)
 
         // Añadimos primero una fila de cabecera para que se sepa qué es cada columna
@@ -28,8 +33,48 @@ class EstadoActivity : AppCompatActivity() {
 
         // Cargamos los datos
         generarFilasDesdeDB()
+
+        btnReiniciar.setOnClickListener {
+            // Es recomendable pedir confirmación, pero aquí tienes el código directo:
+            reiniciarBaseDeDatos()
+        }
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Creamos el Intent para ir a MainActivity
+                val intent = Intent(this@EstadoActivity, MainActivity::class.java)
+
+                // Estas banderas limpian la pila de actividades para que no se
+                // acumulen pantallas una encima de otra
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+
+                startActivity(intent)
+                finish() // Cerramos EstadoActivity
+            }
+        })
     }
 
+    private fun reiniciarBaseDeDatos() {
+        val admin = SQLite(this)
+        val bd = admin.writableDatabase
+
+        // Preparamos los valores iniciales
+        val values = ContentValues()
+        values.put(SQLite.COLUMN_MEJOR_TIEMPO, 99.99)
+        values.put(SQLite.COLUMN_VECES_SUPERADO, 0)
+        values.put(SQLite.COLUMN_VECES_BATIDO, 0)
+
+        // Actualizamos todas las filas (al no poner cláusula WHERE, afecta a todas)
+        bd.update(SQLite.TABLE_ESTADO, values, null, null)
+        bd.close()
+
+        // Para que Marina vea los cambios al instante, reiniciamos la Activity
+        val intent = intent
+        finish() // Cerramos la actual
+        startActivity(intent) // La volvemos a abrir
+        // Opcional: Quitar la animación para que parezca un refresco instantáneo
+        overridePendingTransition(0, 0)
+    }
     private fun añadirCabecera() {
         val filaCabecera = TableRow(this)
         filaCabecera.setBackgroundColor(ContextCompat.getColor(this, R.color.black)) // Cabecera en negro para distinguir
@@ -106,7 +151,7 @@ class EstadoActivity : AppCompatActivity() {
             } while (fila.moveToNext())
         }
         fila.close()
-        bd.close()
+        //bd.close()
     }
 
     private fun crearTextViewCelda(texto: String): TextView {

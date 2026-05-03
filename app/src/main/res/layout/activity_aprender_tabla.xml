@@ -31,5 +31,17 @@
             android:textAlignment="center" />
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/tvAtribucion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text=""
+        android:textColor="#80000000"
+        android:textSize="10sp"
+        android:textStyle="italic"
+        android:gravity="end"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

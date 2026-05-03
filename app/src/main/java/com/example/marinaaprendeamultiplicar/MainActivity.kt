@@ -54,15 +54,12 @@ class MainActivity : AppCompatActivity() {
 //                // startActivity(intent)
 //            }
 
-            btnEstado.setOnClickListener {
-                // Aquí irá el código para abrir la actividad de Estado
-                //Toast.makeText(this, "Has clicado estado", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, EstadoActivity::class.java)
-                startActivity(intent)
-            }
-
-
-
+        }
+        btnEstado.setOnClickListener {
+            // Aquí irá el código para abrir la actividad de Estado
+            //Toast.makeText(this, "Has clicado estado", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, EstadoActivity::class.java)
+            startActivity(intent)
         }
     }
 }

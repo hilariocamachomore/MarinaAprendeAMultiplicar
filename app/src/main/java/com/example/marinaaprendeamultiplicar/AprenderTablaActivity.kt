@@ -62,6 +62,7 @@ class AprenderTablaActivity : AppCompatActivity() {
     }
 
     private fun generateTabla(numeroTabla: Int) {
+        val tvAtribucion: TextView = findViewById(R.id.tvAtribucion)
         val tablaLayout: LinearLayout = findViewById(R.id.tablaLayout)
         // Get the TextView from the layout
         val tablaTextView: TextView = findViewById(R.id.tablaTextView)
@@ -73,6 +74,25 @@ class AprenderTablaActivity : AppCompatActivity() {
             // Append each multiplication line to the TextView
             val multiplicationLine = "$numeroTabla x $i = ${numeroTabla * i}\n"
             tablaTextView.append(multiplicationLine)
+        }
+        // 2. Lógica de atribuciones de FiftySounds
+        val obra = when (numeroTabla) {
+            1 -> "A day to remember"
+            2 -> "Candytown"
+            3 -> "A world of colour"
+            4 -> "Beautiful morning"
+            5 -> "Flowers in your hair"
+            6 -> "Good vibes"
+            7 -> "Happy Day"
+            8 -> "Little Nicholas"
+            9 -> "Smile for me"
+            10 -> "The little gangster"
+            else -> ""
+        }
+
+        if (obra.isNotEmpty()) {
+            val textoAtribucion = "Obra: $obra\nMúsica de https://www.fiftysounds.com/es"
+            tvAtribucion.text = textoAtribucion
         }
     }
     override fun onStop() {

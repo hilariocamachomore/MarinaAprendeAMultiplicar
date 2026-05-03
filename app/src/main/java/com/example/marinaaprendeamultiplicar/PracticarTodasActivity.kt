@@ -17,6 +17,12 @@ import android.graphics.Color
 
 class PracticarTodasActivity : AppCompatActivity() {
 
+    companion object {
+        const val NUMERO_TABLA = "NUMERO_TABLA"
+    }
+
+    private var startTime: Long = 0
+    private var tiempoFinal: Long = 0
     private lateinit var tvPregunta: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var respuesta1: Button
@@ -43,6 +49,7 @@ class PracticarTodasActivity : AppCompatActivity() {
         setContentView(R.layout.activity_practicar_todas)
         //Log.d("HECTOR OnCreate", " OnCreate")
 
+
         // Initialize UI elements
         tvPregunta = findViewById(R.id.tvPregunta)
         progressBar = findViewById(R.id.progressBar)
@@ -57,7 +64,7 @@ class PracticarTodasActivity : AppCompatActivity() {
         correctSound = MediaPlayer.create(this, R.raw.correcto)
         incorrectSound = MediaPlayer.create(this, R.raw.incorrecto)
         endTimeSound = MediaPlayer.create(this, R.raw.fin_tiempo)
-        victorySound = MediaPlayer.create(this, R.raw.victoria)
+        //victorySound = MediaPlayer.create(this, R.raw.victoria)
 
 
         // Initialize progress bar
@@ -65,6 +72,7 @@ class PracticarTodasActivity : AppCompatActivity() {
         progressBar.progress = 0
 
         generarPregunta()
+        startTime = System.currentTimeMillis() // Captura el momento en que empieza a jugar
 
         // Set click listeners for answer buttons
         respuesta1.setOnClickListener { comprobarRespuesta(respuesta1.text.toString().toInt()) }
@@ -155,7 +163,7 @@ class PracticarTodasActivity : AppCompatActivity() {
             // ... (Add code to play correct answer sound) ...
 
             if (progressBar.progress == progressBar.max) {
-                mostrarVictoriaYVolverAlMenu()
+                enviarAVictoria()
             } else {
                 //generarPregunta() // Generate next question
                 tvPregunta.setTextColor(Color.GREEN)
@@ -192,24 +200,50 @@ class PracticarTodasActivity : AppCompatActivity() {
         }, 1000)
     }
 
-    private fun mostrarVictoriaYVolverAlMenu() {
+//    private fun mostrarVictoriaYVolverAlMenu() {
+//        countDownTimer.cancel()
+//        // Play victory sound
+//        // ... (Add code to play victory sound) ...
+//
+//        // Show victory message in tvPregunta
+//        victorySound?.start()
+//        tvPregunta.text = "¡¡VICTORIA!!"
+//
+//        // Disable buttons
+//        desactivarBotones()
+//
+//        // Wait for 3 seconds and then navigate to main menu
+//        handler.postDelayed({
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+//            finish() // Optional: Finish the current activity
+//        }, 4000)
+//    }
+
+    private fun enviarAVictoria() {
         countDownTimer.cancel()
-        // Play victory sound
-        // ... (Add code to play victory sound) ...
+        // 1. Calcular el tiempo que ha tardado (en milisegundos)
+        tiempoFinal = System.currentTimeMillis() - startTime
 
-        // Show victory message in tvPregunta
-        victorySound?.start()
-        tvPregunta.text = "¡¡VICTORIA!!"
+        // 2. Sonido y mensaje visual
+        //victorySound?.start()
 
-        // Disable buttons
+        //tvPregunta.text = "¡¡CONSEGUIDO!!"
+        //tvPregunta.setTextColor(Color.YELLOW)
+
         desactivarBotones()
 
-        // Wait for 3 seconds and then navigate to main menu
+        // 3. Esperar un momento y saltar a VictoriaActivity
         handler.postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, Victoria::class.java) // Asegúrate de crear esta Activity
+
+            // Pasamos los datos necesarios para tu futura base de datos
+            intent.putExtra("TIEMPO_TOTAL", tiempoFinal) // En milisegundos
+            intent.putExtra("TABLA_REALIZADA", 11)
+
             startActivity(intent)
-            finish() // Optional: Finish the current activity
-        }, 4000)
+            finish()
+        }, 500) // Reducido a 1/2 segundo para que no sea tan larga la espera
     }
 
     private fun desactivarBotones() {
