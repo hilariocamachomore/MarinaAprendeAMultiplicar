@@ -69,7 +69,7 @@ class PracticarTablaActivity : AppCompatActivity() {
 
 
         // Initialize progress bar
-        progressBar.max = 6
+        progressBar.max = 20
         progressBar.progress = 0
 
         generarPregunta()

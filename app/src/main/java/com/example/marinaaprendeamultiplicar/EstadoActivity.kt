@@ -35,8 +35,24 @@ class EstadoActivity : AppCompatActivity() {
         generarFilasDesdeDB()
 
         btnReiniciar.setOnClickListener {
-            // Es recomendable pedir confirmación, pero aquí tienes el código directo:
-            reiniciarBaseDeDatos()
+            // Creamos el cuadro de diálogo de confirmación
+            val builder = android.app.AlertDialog.Builder(this)
+            builder.setTitle("¿Estás segur@?")
+            builder.setMessage("Se borrarán todos tus logros y volverán a estar a cero.")
+
+            // Si pulsa "SÍ", ejecutamos el reinicio
+            builder.setPositiveButton("SÍ,REINICIAR") { _, _ ->
+                reiniciarBaseDeDatos()
+            }
+
+            // Si pulsa "NO", no hace nada y cierra el diálogo
+            builder.setNegativeButton("NO,VOLVER") { dialog, _ ->
+                dialog.dismiss()
+            }
+
+            // Mostramos el aviso
+            val dialog = builder.create()
+            dialog.show()
         }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
