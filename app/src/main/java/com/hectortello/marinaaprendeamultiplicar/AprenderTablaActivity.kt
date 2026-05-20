@@ -1,5 +1,5 @@
 
-package com.example.marinaaprendeamultiplicar
+package com.hectortello.marinaaprendeamultiplicar
 
 import android.os.Bundle
 import android.widget.LinearLayout

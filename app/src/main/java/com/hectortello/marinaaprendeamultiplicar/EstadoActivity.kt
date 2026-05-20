@@ -1,4 +1,4 @@
-package com.example.marinaaprendeamultiplicar
+package com.hectortello.marinaaprendeamultiplicar
 
 import android.content.ContentValues
 import android.content.Intent
@@ -12,7 +12,7 @@ import android.widget.TableRow
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
-import com.example.marinaaprendeamultiplicar.SQLite.SQLite
+import com.hectortello.marinaaprendeamultiplicar.SQLite.SQLite
 
 class EstadoActivity : AppCompatActivity() {
 

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.marinaaprendeamultiplicar"
+    namespace = "com.hectortello.marinaaprendeamultiplicar"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.marinaaprendeamultiplicar"
+        applicationId = "com.hectortello.marinaaprendeamultiplicar"
         minSdk = 27
         targetSdk = 34
         versionCode = 1

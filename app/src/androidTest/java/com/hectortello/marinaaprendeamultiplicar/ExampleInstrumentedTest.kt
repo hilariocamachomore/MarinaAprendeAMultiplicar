@@ -1,4 +1,4 @@
-package com.example.marinaaprendeamultiplicar
+package com.hectortello.marinaaprendeamultiplicar
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

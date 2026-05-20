@@ -1,4 +1,4 @@
-package com.example.marinaaprendeamultiplicar
+package com.hectortello.marinaaprendeamultiplicar
 
 import android.content.Intent
 import android.media.MediaPlayer
@@ -10,12 +10,10 @@ import android.os.Looper
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import kotlin.math.log
 import kotlin.random.Random
-import android.util.Log
 import android.graphics.Color
 
-class PracticarTodasActivity : AppCompatActivity() {
+class PracticarTablaActivity : AppCompatActivity() {
 
     companion object {
         const val NUMERO_TABLA = "NUMERO_TABLA"
@@ -32,7 +30,7 @@ class PracticarTodasActivity : AppCompatActivity() {
     private lateinit var respuesta5: Button
     private lateinit var respuesta6: Button
 
-    private var numeroTabla: Int = 1
+    private var numeroTabla: Int=1
     private var respuestaCorrecta = 1
     private lateinit var countDownTimer: CountDownTimer
     private lateinit var mediaPlayer: MediaPlayer
@@ -41,14 +39,15 @@ class PracticarTodasActivity : AppCompatActivity() {
     private var correctSound: MediaPlayer? = null
     private var incorrectSound: MediaPlayer? = null
     private var endTimeSound: MediaPlayer? = null
-    private var victorySound: MediaPlayer? = null
+    //private var victorySound: MediaPlayer? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_practicar_todas)
+        setContentView(R.layout.activity_practicar_tabla)
         //Log.d("HECTOR OnCreate", " OnCreate")
-
+        // Get the table number from the extra
+        numeroTabla = intent.getIntExtra(NUMERO_TABLA, 1)
 
         // Initialize UI elements
         tvPregunta = findViewById(R.id.tvPregunta)
@@ -68,7 +67,7 @@ class PracticarTodasActivity : AppCompatActivity() {
 
 
         // Initialize progress bar
-        progressBar.max = 30
+        progressBar.max = 20
         progressBar.progress = 0
 
         generarPregunta()
@@ -87,7 +86,6 @@ class PracticarTodasActivity : AppCompatActivity() {
         //Log.d("HECTOR ProgressBarProgress", "Progress: ${progressBar.progress}")
         //Log.d("HECTOR numerotabla", "numerotabla: $numeroTabla")
         // Generate a random number between 1 and 10
-        numeroTabla = Random.nextInt(1, 11)
         var numAleatorio: Int
 
         // Generate a question different from the previous one
@@ -141,7 +139,7 @@ class PracticarTodasActivity : AppCompatActivity() {
 
             override fun onFinish() {
                 // Time's up! Decrement progress and play sound
-                endTimeSound?.start() // Play the correct sound
+                endTimeSound?.start() // Play the end time sound
                 if (progressBar.progress > 0) {
                     progressBar.progress--
                 }
@@ -165,7 +163,7 @@ class PracticarTodasActivity : AppCompatActivity() {
             if (progressBar.progress == progressBar.max) {
                 enviarAVictoria()
             } else {
-                //generarPregunta() // Generate next question
+                //generarPregunta() // Generate next question aquiaqui
                 tvPregunta.setTextColor(Color.GREEN)
                 mostrarRespuestaCorrectaYContinuar()
             }
@@ -239,13 +237,12 @@ class PracticarTodasActivity : AppCompatActivity() {
 
             // Pasamos los datos necesarios para tu futura base de datos
             intent.putExtra("TIEMPO_TOTAL", tiempoFinal) // En milisegundos
-            intent.putExtra("TABLA_REALIZADA", 11)
+            intent.putExtra("TABLA_REALIZADA", numeroTabla)
 
             startActivity(intent)
             finish()
         }, 500) // Reducido a 1/2 segundo para que no sea tan larga la espera
     }
-
     private fun desactivarBotones() {
         respuesta1.isEnabled = false
         respuesta2.isEnabled = false
@@ -280,7 +277,7 @@ class PracticarTodasActivity : AppCompatActivity() {
         incorrectSound = null
         endTimeSound?.release()
         endTimeSound = null
-        victorySound?.release()
-        victorySound = null
+        //victorySound?.release()
+        //victorySound = null
     }
 }

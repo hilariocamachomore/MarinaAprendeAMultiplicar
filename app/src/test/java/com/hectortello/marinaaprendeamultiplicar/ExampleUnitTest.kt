@@ -1,4 +1,4 @@
-package com.example.marinaaprendeamultiplicar
+package com.hectortello.marinaaprendeamultiplicar
 
 import org.junit.Test
 

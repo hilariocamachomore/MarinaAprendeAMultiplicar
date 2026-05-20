@@ -1,4 +1,4 @@
-package com.example.marinaaprendeamultiplicar
+package com.hectortello.marinaaprendeamultiplicar
 
 import android.content.ContentValues
 import android.content.Intent
@@ -11,7 +11,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.marinaaprendeamultiplicar.SQLite.SQLite
+import com.hectortello.marinaaprendeamultiplicar.SQLite.SQLite
 
 class Victoria : AppCompatActivity() {
     var tvMsgTiempo: TextView? = null

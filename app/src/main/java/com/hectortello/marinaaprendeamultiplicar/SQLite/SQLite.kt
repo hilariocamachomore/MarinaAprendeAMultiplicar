@@ -1,4 +1,4 @@
-package com.example.marinaaprendeamultiplicar.SQLite
+package com.hectortello.marinaaprendeamultiplicar.SQLite
 
 import android.content.ContentValues
 import android.content.Context
